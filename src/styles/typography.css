@@ -106,8 +106,16 @@ h2 {
 	font-weight: 700;
 }
 
+h1,
+h2 {
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
 h3 {
-	font-weight: 500;
+	font-family: var(--theme-font-family-sans);
+	font-weight: 900;
+	line-height: 1.2;
 }
 
 h6 {

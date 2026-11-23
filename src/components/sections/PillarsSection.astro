@@ -1,66 +1,58 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Container } from '@components/odyssey-theme';
 import { pillars } from '../../config/pillars.js';
-const { linked = true } = Astro.props;
+const { linked = true, eyebrow, title } = Astro.props;
 ---
 
-<Container>
-	<section class="pillars__section">
+<section class="pillars">
+	<div class="pillars__inner">
+		{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+		{title && <h2>{title}</h2>}
 		<slot />
 		<div class="pillars__grid">
-			{pillars.map((p, i) => (
-				<article class="pillar">
-					<span class="pillar__icon"><Icon name={p.icon} width={28} height={28} /></span>
-					<p class="pillar__num">Pillar {i + 1}</p>
+			{pillars.map((p) => (
+				<article class="pillar" style={`--pillar-color: ${p.color}`}>
+					<span class="pillar__icon"><Icon name={p.icon} width={26} height={26} /></span>
 					<h3>{p.title}</h3>
 					<p>{p.summary}</p>
-					{linked && <a href={`/programs#${p.id}`}>Learn more<span class="visually-hidden"> about {p.title}</span> →</a>}
+					{linked && <a href={`/programs#${p.id}`}>Learn more<span class="visually-hidden"> about {p.title}</span></a>}
 				</article>
 			))}
 		</div>
-	</section>
-</Container>
+	</div>
+</section>
 
 <style>
-	.pillars__section {
-		margin: var(--section-margin) auto;
-	}
+	.pillars { background: var(--brand-ivory); }
+	.pillars__inner { max-width: 1200px; margin: 0 auto; padding: 72px 24px; }
 	.pillars__grid {
+		margin-top: 2rem;
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: var(--theme-grid-gap);
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 24px;
 	}
 	.pillar {
-		padding: 2rem;
-		background: var(--theme-surface-2);
-		color: var(--theme-on-surface-2);
-		border-radius: var(--theme-shape-radius);
+		background: #FFFFFF;
+		border-top: 6px solid var(--pillar-color);
+		padding: 30px;
 		display: flex;
 		flex-direction: column;
 	}
-	.pillar h3 { margin-top: 0.25rem; }
-	.pillar a { margin-top: auto; font-weight: 700; color: var(--theme-primary); }
+	.pillar h3 { font-size: 1.45rem; margin-top: 1rem; }
+	.pillar p { color: #2A3240; line-height: 1.6; flex: 1; }
+	.pillar a { font-weight: 700; color: var(--brand-navy); }
+	.pillar a:hover { color: var(--brand-gold-text); }
 	.pillar__icon {
 		display: grid;
 		place-items: center;
 		width: 3rem;
 		height: 3rem;
 		border-radius: 50%;
-		background: var(--theme-primary);
-		color: var(--theme-on-primary);
-	}
-	.pillar__num {
-		margin: 1rem 0 0;
-		font-size: var(--font-size-sm);
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		opacity: 0.75;
+		background: var(--brand-navy);
+		color: #FFFFFF;
 	}
 	.visually-hidden {
 		position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 	}
-	@media (max-width: 900px) {
-		.pillars__grid { grid-template-columns: 1fr; }
-	}
+	@media (max-width: 600px) { .pillars__inner { padding: 48px 16px; } }
 </style>

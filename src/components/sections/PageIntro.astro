@@ -1,0 +1,22 @@
+---
+const { eyebrow, title } = Astro.props;
+---
+
+<section class="intro">
+	<div class="intro__inner">
+		{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+		<h1>{title}</h1>
+		<hr class="gold-rule" />
+		<div class="intro__lead"><slot /></div>
+	</div>
+</section>
+
+<style>
+	.intro { background: var(--brand-navy); color: #FFFFFF; }
+	.intro .eyebrow { color: var(--brand-gold-light); }
+	.intro__inner { max-width: 1200px; margin: 0 auto; padding: 64px 24px; }
+	.intro h1 { color: #FFFFFF; font-size: clamp(2rem, 4vw, 3rem); text-wrap: balance; }
+	.intro__lead { max-width: 44rem; font-size: 1.2rem; line-height: 1.6; color: var(--brand-on-navy-muted); }
+	.intro__lead :global(p) { margin: 0; }
+	@media (max-width: 600px) { .intro__inner { padding: 48px 16px; } }
+</style>

@@ -1,79 +1,94 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { Container, Button } from '@components/odyssey-theme';
+import SealMark from '../../SealMark.astro';
 ---
 
-<Container>
-	<section class="hero-section__section">
-		<div class="hero-section__text">
-			<p class="eyebrow">A nonprofit for families and communities</p>
+<section class="hero on-navy">
+	<svg class="hero__globe" viewBox="0 0 200 200" aria-hidden="true">
+		<g fill="none" stroke="#B8923A" stroke-width="1.2">
+			<circle cx="100" cy="100" r="96"></circle>
+			<ellipse cx="100" cy="100" rx="40" ry="96"></ellipse>
+			<ellipse cx="100" cy="100" rx="72" ry="96"></ellipse>
+			<path d="M4 100 H196 M100 4 V196 M14 56 H186 M14 144 H186"></path>
+		</g>
+	</svg>
+	<div class="hero__inner">
+		<div class="hero__text">
+			<p class="eyebrow">The Washington Family Foundation</p>
 			<h1>Creating pathways to opportunity</h1>
-			<p>
-				The Washington Family Foundation helps children and adults in underserved
-				communities thrive through education, training, and community support.
+			<hr class="gold-rule" />
+			<p class="hero__lead">
+				We help children and adults in underserved communities thrive through
+				education, training, and community support.
 			</p>
-			<div class="hero-btns__container">
-				<Button href="/get-involved#donate" customIcon>
-					Support Our Work
-					<Fragment slot="icon">
-						<Icon name="ic:baseline-chevron-right" />
-					</Fragment>
-				</Button>
-				<Button href="/programs" unelevated>Our Programs</Button>
+			<div class="hero__btns">
+				<a class="btn-coral" href="/get-involved#donate">Give today</a>
+				<a class="btn-outline-light" href="/programs">Explore programs</a>
 			</div>
 		</div>
-		<div class="hero-section__image">
-			<picture>
-				<img
-					src="/assets/images/landing-1/landing-sticky.jpg"
-					alt="An adult working on a laptop at a desk"
-					id="home-hero-image"
-				/>
-			</picture>
+		<div class="hero__media">
+			<img
+				src="/assets/images/landing-1/landing-sticky.jpg"
+				alt="An adult working on a laptop at a desk"
+			/>
+			<span class="hero__dot" aria-hidden="true"></span>
+			<span class="hero__seal"><SealMark ink="#FFFFFF" accent="#B8923A" size={120} decorative /></span>
 		</div>
-	</section>
-</Container>
+	</div>
+</section>
 
 <style>
-	.hero-section__section {
-		margin: var(--section-margin) auto;
-		min-height: min(80vh, 720px);
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		align-items: center;
-		gap: 2rem;
+	.hero {
+		position: relative;
+		overflow: hidden;
+		background: var(--brand-navy);
+		color: #FFFFFF;
 	}
-	.hero-section__text {
-		justify-self: center;
-		max-width: 32rem;
+	.hero__globe {
+		position: absolute;
+		right: -120px;
+		top: -140px;
+		width: 560px;
+		height: 560px;
+		opacity: 0.14;
 	}
-	.eyebrow {
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		font-size: var(--font-size-sm);
-		color: var(--theme-primary);
-		font-weight: 700;
-		margin-bottom: 0.5rem;
-	}
-	.hero-btns__container {
+	.hero__inner {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 72px 24px;
 		display: flex;
 		flex-wrap: wrap;
+		gap: 48px;
 		align-items: center;
-		gap: 1rem;
 	}
-	.hero-section__image {
-		display: flex;
+	.hero__text { flex: 1 1 440px; min-width: 0; }
+	.hero h1 { color: #FFFFFF; font-size: clamp(2.2rem, 4.5vw, 3.4rem); text-wrap: balance; }
+	.hero__lead { font-size: 1.2rem; line-height: 1.6; color: var(--brand-on-navy-muted); max-width: 34rem; }
+	.hero__btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.5rem; }
+	.hero__media { flex: 1 1 360px; position: relative; min-width: 0; }
+	.hero__media img { display: block; width: 100%; height: 400px; object-fit: cover; }
+	.hero__dot {
+		position: absolute;
+		right: -40px;
+		bottom: -40px;
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		background: var(--brand-sky);
+		opacity: 0.85;
 	}
-	.hero-section__image img {
-		width: 100%;
-		height: 100%;
-		max-height: 75vh;
-		object-fit: cover;
-		border-radius: var(--theme-shape-radius);
+	.hero__seal {
+		position: absolute;
+		left: -28px;
+		bottom: -28px;
+		padding: 10px;
+		background: var(--brand-navy);
+		border-radius: 50%;
 	}
-	@media (max-width: 768px) {
-		.hero-section__section {
-			grid-template-columns: 1fr;
-		}
+	@media (max-width: 600px) {
+		.hero__inner { padding: 48px 16px 64px; }
+		.hero__media img { height: 280px; }
+		.hero__seal { left: 8px; }
+		.hero__seal :global(svg) { width: 84px; height: 84px; }
 	}
 </style>

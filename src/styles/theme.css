@@ -1,22 +1,34 @@
 :root {
+	/* Washington Family Foundation brand kit (Kit C: Navy & Gold + program colors) */
+	--brand-navy: #1C2B4A;
+	--brand-gold: #B8923A; /* seal, rules, accents; not for small text */
+	--brand-gold-text: #8A6A2A; /* gold for text on light grounds */
+	--brand-gold-light: #D8B970; /* gold for text on navy */
+	--brand-ivory: #F7F4EC;
+	--brand-slate: #5B6472;
+	--brand-coral: #EE8B6E; /* program color: buttons and bands, navy text on it */
+	--brand-sky: #8CC7E6; /* program color */
+	--brand-line: #E4DFD2;
+	--brand-on-navy-muted: #D9DEE8;
+
 	/* Theme Colors */
-	--theme-primary: #1f5f5b;
-	--theme-primary-hover: #174845;
+	--theme-primary: #1C2B4A;
+	--theme-primary-hover: #2A3D63;
 	--theme-on-primary: #fff;
 
-	--theme-bg: #fdfbf7;
-	--theme-on-bg: #1c2422;
+	--theme-bg: #FFFFFF;
+	--theme-on-bg: #1C2B4A;
 
-	--theme-surface-1: #f3ede3;
-	--theme-on-surface-1: #1c2422;
+	--theme-surface-1: #F7F4EC;
+	--theme-on-surface-1: #1C2B4A;
 
-	--theme-surface-2: #e4efe9;
-	--theme-on-surface-2: #1c2422;
+	--theme-surface-2: #E3F1F9;
+	--theme-on-surface-2: #1C2B4A;
 
 	/* Theme Shapes */
 	/* Set this to 0 if you want all of the rounded cards, images, etc to be straight edges */
-	--theme-shape-radius: clamp(1rem, 2rem, 3rem);
-	--theme-button-border-radius: 3rem;
+	--theme-shape-radius: 0;
+	--theme-button-border-radius: 0;
 
 	/* Theme Transition */
 	--theme-transition: 0.2s ease-in-out;
@@ -31,7 +43,7 @@
 	--theme-blog-post-header-width: 1200px;
 
 	/* Theme Fonts */
-	--theme-font-family-serif: 'Roboto Serif', Georgia, Cambria, 'Times New Roman',
+	--theme-font-family-serif: 'Cinzel', 'Roboto Serif', Georgia, Cambria, 'Times New Roman',
 		Times, serif;
 	--theme-font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont,
 		sans-serif;
@@ -40,23 +52,23 @@
 [data-theme='default'] {
 	color-scheme: light;
 	/* Theme Colors */
-	--theme-primary: #1f5f5b;
-	--theme-primary-hover: #174845;
+	--theme-primary: #1C2B4A;
+	--theme-primary-hover: #2A3D63;
 	--theme-on-primary: #fff;
 
-	--theme-bg: #fdfbf7;
-	--theme-on-bg: #1c2422;
+	--theme-bg: #FFFFFF;
+	--theme-on-bg: #1C2B4A;
 
-	--theme-surface-1: #f3ede3;
-	--theme-on-surface-1: #1c2422;
+	--theme-surface-1: #F7F4EC;
+	--theme-on-surface-1: #1C2B4A;
 
-	--theme-surface-2: #e4efe9;
-	--theme-on-surface-2: #1c2422;
+	--theme-surface-2: #E3F1F9;
+	--theme-on-surface-2: #1C2B4A;
 
 	/* Theme Shape */
 	/* Set this to 0 if you want all of the rounded cards, images, etc to be straight edges */
-	--theme-shape-radius: clamp(1rem, 2rem, 3rem);
-	--theme-button-border-radius: 3rem;
+	--theme-shape-radius: 0;
+	--theme-button-border-radius: 0;
 
 	/* Theme Transition */
 	--theme-transition: 0.2s ease-in-out;

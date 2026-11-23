@@ -1,60 +1,70 @@
 ---
-import { CtaCardSection, TextCardSection, Button } from '@components/odyssey-theme';
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
 import PillarsSection from '../components/sections/PillarsSection.astro';
+import GiveBand from '../components/sections/GiveBand.astro';
 ---
 
 <Layout>
 	<HomeHeroSection />
 
-	<TextCardSection>
-		<h2>Our mission</h2>
-		<p class="lead">
-			The Washington Family Foundation creates pathways to opportunity for children
-			and adults in underserved communities. Through education, workforce training,
-			and community outreach, we help families build skills, stability, and the
-			support they need to thrive, today and for generations to come.
-		</p>
-		<Button href="/about" unelevated>About the Foundation</Button>
-	</TextCardSection>
+	<section class="mission">
+		<div class="mission__inner">
+			<div>
+				<p class="eyebrow">Our mission</p>
+				<h2>Skills, stability and support for every family</h2>
+			</div>
+			<div>
+				<p class="lead">
+					The Washington Family Foundation creates pathways to opportunity for children
+					and adults in underserved communities. Through education, workforce training,
+					and community outreach, we help families build skills, stability, and the
+					support they need to thrive, today and for generations to come.
+				</p>
+				<a class="btn-outline-navy" href="/about">About the Foundation</a>
+			</div>
+		</div>
+	</section>
 
-	<PillarsSection>
-		<h2>Three pillars, one goal</h2>
-		<p>
-			We advance our mission through three pillars that support every member of
-			the family, from the classroom to the workplace to the neighborhood.
+	<PillarsSection eyebrow="What we do" title="Three pillars, one goal">
+		<p class="pillars-lead">
+			We support every member of the family, from the classroom to the workplace to the neighborhood.
 		</p>
 	</PillarsSection>
 
-	<CtaCardSection background="var(--theme-primary)" color="var(--theme-on-primary)">
-		<h2>A future where every family can thrive</h2>
-		<p>
-			We envision communities where every child and adult has a fair chance to
-			succeed, no matter their zip code, income, or circumstances.
-		</p>
-		<div class="cta-btns">
-			<a class="cta-link" href="/get-involved#donate">Donate</a>
-			<a class="cta-link cta-link--ghost" href="/get-involved#volunteer">Volunteer</a>
+	<section class="vision on-navy">
+		<div class="vision__inner">
+			<p class="eyebrow">Our vision</p>
+			<p class="vision__quote">
+				A future where every family, whatever its starting point, has the opportunity
+				to thrive and lift up the community around it.
+			</p>
 		</div>
-	</CtaCardSection>
+	</section>
+
+	<GiveBand />
 </Layout>
 
 <style>
-	.lead { font-size: var(--font-size-md); }
-	.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 0.5rem; }
-	.cta-link {
-		padding: 0.75rem 1.5rem;
-		border-radius: var(--theme-button-border-radius);
-		background: var(--theme-on-primary);
-		color: var(--theme-primary);
-		font-weight: 700;
-		text-decoration: none;
+	.mission__inner {
+		max-width: 1200px; margin: 0 auto; padding: 72px 24px;
+		display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start;
 	}
-	.cta-link--ghost {
-		background: transparent;
-		color: var(--theme-on-primary);
-		box-shadow: inset 0 0 0 2px var(--theme-on-primary);
+	.mission h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); text-wrap: balance; }
+	.lead { font-size: 1.15rem; line-height: 1.7; color: #2A3240; margin-bottom: 1.5rem; }
+	.pillars-lead { max-width: 40rem; color: #2A3240; }
+	.vision { background: var(--brand-navy); color: #FFFFFF; }
+	.vision__inner { max-width: 960px; margin: 0 auto; padding: 72px 24px; text-align: center; }
+	.vision__quote {
+		margin: 0;
+		font-family: var(--theme-font-family-serif);
+		font-weight: 600;
+		font-size: clamp(1.4rem, 2.6vw, 2rem);
+		line-height: 1.35;
+		text-wrap: balance;
 	}
-	.cta-link:hover { opacity: 0.88; }
+	@media (max-width: 768px) {
+		.mission__inner { grid-template-columns: 1fr; gap: 16px; padding: 48px 16px; }
+		.vision__inner { padding: 56px 16px; }
+	}
 </style>

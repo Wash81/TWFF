@@ -1,0 +1,33 @@
+---
+// The Washington Family Foundation Heritage Seal (from the brand kit).
+// Never stretch, recolor outside the kit, rotate, or add effects.
+interface Props { ink?: string; accent?: string; size?: number; decorative?: boolean; }
+const { ink = '#1C2B4A', accent = '#B8923A', size = 240, decorative = false } = Astro.props;
+const uid = `s${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg
+	width={size}
+	height={size}
+	viewBox="0 0 240 240"
+	class="seal-mark"
+	{...decorative ? { 'aria-hidden': 'true' } : { role: 'img', 'aria-label': 'The Washington Family Foundation seal' }}
+>
+	<defs>
+		<path id={`${uid}t`} d="M36 120 A84 84 0 0 1 204 120"></path>
+		<path id={`${uid}b`} d="M23 120 A97 97 0 0 0 217 120"></path>
+	</defs>
+	<circle cx="120" cy="120" r="114" fill="none" stroke={ink} stroke-width="4"></circle>
+	<circle cx="120" cy="120" r="107" fill="none" stroke={ink} stroke-width="1.5"></circle>
+	<circle cx="120" cy="120" r="72" fill="none" stroke={ink} stroke-width="1.5"></circle>
+	<text font-family="Cinzel, serif" font-size="15" font-weight="700" letter-spacing="3" fill={ink}><textPath href={`#${uid}t`} startOffset="50%" text-anchor="middle">THE WASHINGTON</textPath></text>
+	<text font-family="Cinzel, serif" font-size="14" font-weight="700" letter-spacing="2.5" fill={ink}><textPath href={`#${uid}b`} startOffset="50%" text-anchor="middle">FAMILY FOUNDATION</textPath></text>
+	<path d="M30 114 L35 120 L30 126 L25 120 Z M210 114 L215 120 L210 126 L205 120 Z" fill={accent}></path>
+	<circle cx="120" cy="120" r="52" fill="none" stroke={accent} stroke-width="3.5"></circle>
+	<ellipse cx="120" cy="120" rx="22" ry="52" fill="none" stroke={accent} stroke-width="2.5"></ellipse>
+	<path d="M120 68 V172 M68 120 H172 M75 94 H165 M75 146 H165" stroke={accent} stroke-width="2.5" fill="none"></path>
+</svg>
+
+<style>
+	.seal-mark { display: block; flex: none; }
+</style>

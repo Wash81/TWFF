@@ -1,5 +1,5 @@
 ---
-import { Button, FormInput, FormSelect, FormTextarea } from '@components/odyssey-theme';
+import { FormInput, FormSelect, FormTextarea } from '@components/odyssey-theme';
 
 const selectOptions = [
   "Donating",
@@ -16,10 +16,11 @@ const selectOptions = [
   <FormInput type="email" label="Email" name="Email" placeholder="hello@example.com" />
   <FormSelect label="I’m Interested In" options={selectOptions} />
   <FormTextarea label="Message" name="Message" placeholder="Your message here..." />
-  <Button>Submit</Button>
+  <button class="btn-navy form-submit" type="submit">Send message</button>
 </form>
 
 <style>
+  .form-submit { justify-self: start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
   form {
     display: grid;
     grid-template-columns: 1fr;

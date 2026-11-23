@@ -1,7 +1,9 @@
 ---
-import { TextSection, TextCardSection } from '@components/odyssey-theme';
 import Layout from '../layouts/Page.astro';
+import PageIntro from '../components/sections/PageIntro.astro';
 import PillarsSection from '../components/sections/PillarsSection.astro';
+import GiveBand from '../components/sections/GiveBand.astro';
+import SealMark from '../components/SealMark.astro';
 
 const seo = {
 	title: 'About | The Washington Family Foundation',
@@ -10,47 +12,61 @@ const seo = {
 ---
 
 <Layout {seo}>
-	<TextSection narrow>
-		<h1>About the Foundation</h1>
-		<p class="lead">
-			The Washington Family Foundation is a nonprofit organization that helps
-			children and adults in underserved communities thrive through education,
-			training, and community support.
-		</p>
-	</TextSection>
-
-	<TextCardSection>
-		<h2 id="mission">Mission</h2>
+	<PageIntro eyebrow="About us" title="About the Foundation">
 		<p>
-			The Washington Family Foundation creates pathways to opportunity for children
-			and adults in underserved communities. Through education, workforce training,
-			and community outreach, we help families build skills, stability, and the
-			support they need to thrive, today and for generations to come.
+			The Washington Family Foundation is a nonprofit organization that helps children
+			and adults in underserved communities thrive through education, training, and
+			community support.
 		</p>
-	</TextCardSection>
+	</PageIntro>
 
-	<TextCardSection surfaceNumber={2}>
-		<h2 id="vision">Vision</h2>
-		<p>
-			The Washington Family Foundation envisions communities where every child and
-			adult has a fair chance to succeed, no matter their zip code, income, or
-			circumstances. We see a future where families have the resources, skills, and
-			support to thrive and give back, building stronger communities for
-			generations to come.
-		</p>
-	</TextCardSection>
+	<section class="mv">
+		<div class="mv__inner">
+			<div class="mv__seal"><SealMark size={220} /></div>
+			<div class="mv__text">
+				<div id="mission" class="mv__block">
+					<p class="eyebrow">Mission</p>
+					<p>
+						The Washington Family Foundation creates pathways to opportunity for children
+						and adults in underserved communities. Through education, workforce training,
+						and community outreach, we help families build skills, stability, and the
+						support they need to thrive, today and for generations to come.
+					</p>
+				</div>
+				<div id="vision" class="mv__block">
+					<p class="eyebrow">Vision</p>
+					<p>
+						The Washington Family Foundation envisions communities where every child and
+						adult has a fair chance to succeed, no matter their zip code, income, or
+						circumstances. We see a future where families have the resources, skills, and
+						support to thrive and give back, building stronger communities for
+						generations to come.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-	<PillarsSection>
-		<h2>How we work</h2>
-		<p>
+	<PillarsSection eyebrow="How we work" title="Our three pillars">
+		<p class="pillars-lead">
 			The Washington Family Foundation advances its mission through three pillars:
-			Education and Youth Development, Workforce and Economic Mobility, and Family
-			and Community Wellness.
+			Education and Youth Development, Workforce and Economic Mobility, and Family and
+			Community Wellness.
 		</p>
 	</PillarsSection>
+
+	<GiveBand />
 </Layout>
 
 <style>
-	.lead { font-size: var(--font-size-md); }
-	h2[id] { scroll-margin-top: 2rem; }
+	.mv__inner {
+		max-width: 1200px; margin: 0 auto; padding: 72px 24px;
+		display: flex; flex-wrap: wrap; gap: 56px; align-items: center;
+	}
+	.mv__seal { flex: none; margin: 0 auto; }
+	.mv__text { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+	.mv__block { scroll-margin-top: 2rem; }
+	.mv__block p:last-child { font-size: 1.15rem; line-height: 1.7; color: #2A3240; margin: 0; }
+	.pillars-lead { max-width: 44rem; color: #2A3240; }
+	@media (max-width: 600px) { .mv__inner { padding: 48px 16px; } }
 </style>

@@ -1,35 +1,29 @@
 ---
+import SealMark from './SealMark.astro';
+interface Props { reversed?: boolean; size?: number; }
+const { reversed = false, size = 52 } = Astro.props;
 ---
 
-<p class="twff-logo"><span class="twff-logo__mark" aria-hidden="true">W</span><span>The Washington Family Foundation</span></p>
+<span class:list={['twff-logo', { 'twff-logo--reversed': reversed }]}>
+	<SealMark ink={reversed ? '#FFFFFF' : '#1C2B4A'} accent="#B8923A" size={size} decorative />
+	<span class="twff-logo__word">The Washington<br />Family Foundation</span>
+</span>
 
 <style>
 	.twff-logo {
-		width: fit-content;
-		margin: 0;
-		display: flex;
+		display: inline-flex;
 		align-items: center;
-		gap: 0.6rem;
+		gap: 12px;
+		color: var(--brand-navy);
+	}
+	.twff-logo--reversed { color: #FFFFFF; }
+	@media (max-width: 600px) { .twff-logo__word { font-size: 12px; letter-spacing: 1px; } }
+	.twff-logo__word {
 		font-family: var(--theme-font-family-serif);
-		font-size: var(--font-size-md);
-		line-height: 1.2;
-		color: inherit;
-	}
-	.twff-logo__mark {
-		flex: none;
-		display: grid;
-		place-items: center;
-		width: 2.25rem;
-		height: 2.25rem;
-		border-radius: 50%;
-		background: var(--theme-primary);
-		color: var(--theme-on-primary);
+		font-size: 15px;
 		font-weight: 700;
-	}
-	.twff-logo:hover span:last-child {
-		text-decoration: underline;
-	}
-	@media (max-width: 900px) {
-		.twff-logo span:last-child { font-size: 0.95rem; max-width: 12rem; }
+		letter-spacing: 1.5px;
+		line-height: 1.3;
+		text-transform: uppercase;
 	}
 </style>

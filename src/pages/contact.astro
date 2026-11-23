@@ -1,7 +1,8 @@
 ---
 import ContactForm from '../components/forms/ContactForm.astro';
 import Layout from '../layouts/Page.astro';
-import { Container } from '@components/odyssey-theme';
+import SealMark from '../components/SealMark.astro';
+import settings from '../config/settings';
 
 const seo = {
 	title: 'Contact | The Washington Family Foundation',
@@ -10,49 +11,44 @@ const seo = {
 ---
 
 <Layout seo={seo}>
-	<Container>
-		<section class="contact-hero__section">
-			<div class="contact-hero__text-section">
-				<h1>Contact Us</h1>
+	<section class="contact">
+		<div class="contact__inner">
+			<div class="contact__panel on-navy">
+				<p class="eyebrow">Contact</p>
+				<h1>We'd love to hear from you</h1>
+				<hr class="gold-rule" />
 				<p>
 					Whether you want to donate, volunteer, partner with us, or learn about our
-					programs for your family, we would love to hear from you.
+					programs for your family, send us a note.
 				</p>
-				<p>
-					<strong>Email:</strong> <a href="mailto:info@twffinc.org">info@twffinc.org</a>
-				</p>
+				<p class="contact__email"><span>Email</span><a href={`mailto:${settings.email}`}>{settings.email}</a></p>
+				<div class="contact__seal"><SealMark ink="#FFFFFF" accent="#B8923A" size={110} decorative /></div>
 			</div>
-			<div class="col-2__container">
+			<div class="contact__form">
 				<ContactForm />
 			</div>
-		</section>
-	</Container>
+		</div>
+	</section>
 </Layout>
 
 <style>
-	.contact-hero__section {
-		margin: var(--section-margin) auto;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		min-height: calc(90vh - var(--navbar-height));
-		gap: 3rem;
+	.contact__inner {
+		max-width: 1200px; margin: 0 auto; padding: 64px 24px;
+		display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
 	}
-	.contact-hero__text-section {
-		padding: 2rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		background-color: var(--theme-surface-1);
-		border-radius: var(--theme-shape-radius);
+	.contact__panel {
+		position: relative; padding: 40px; background: var(--brand-navy); color: var(--brand-on-navy-muted);
+		display: flex; flex-direction: column; justify-content: center;
 	}
-	.col-2__container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+	.contact__panel h1 { color: #FFFFFF; font-size: clamp(1.9rem, 3.4vw, 2.6rem); text-wrap: balance; }
+	.contact__panel p { line-height: 1.6; }
+	.contact__email { display: flex; flex-direction: column; gap: 4px; margin-top: 0.5rem; }
+	.contact__email span { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-gold-light); }
+	.contact__email a { color: #FFFFFF; font-size: 1.2rem; font-weight: 700; }
+	.contact__seal { margin-top: 1.5rem; }
+	.contact__form { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
 	@media (max-width: 768px) {
-		.contact-hero__section {
-			grid-template-columns: 1fr;
-		}
+		.contact__inner { grid-template-columns: 1fr; padding: 32px 16px 48px; }
+		.contact__panel { padding: 32px 24px; }
 	}
 </style>

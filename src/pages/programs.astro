@@ -1,7 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Container, TextSection, CtaCardSection, Button } from '@components/odyssey-theme';
 import Layout from '../layouts/Page.astro';
+import PageIntro from '../components/sections/PageIntro.astro';
+import GiveBand from '../components/sections/GiveBand.astro';
 import { pillars } from '../config/pillars.js';
 
 const seo = {
@@ -14,20 +15,19 @@ const images = {
 ---
 
 <Layout {seo}>
-	<TextSection narrow>
-		<h1>Our Programs</h1>
-		<p class="lead">
-			Our work is organized around three pillars that meet families where they
-			are, supporting children, adults, and the communities they call home.
+	<PageIntro eyebrow="Programs" title="Our Programs">
+		<p>
+			Our work is organized around three pillars that meet families where they are,
+			supporting children, adults, and the communities they call home.
 		</p>
-	</TextSection>
+	</PageIntro>
 
-	<Container>
-		{pillars.map((p, i) => (
-			<section id={p.id} class:list={['program', { 'program--alt': i % 2 === 1 }]}>
+	{pillars.map((p, i) => (
+		<section id={p.id} class:list={['program', { 'program--ivory': i % 2 === 1 }]} style={`--pillar-color: ${p.color}`}>
+			<div class:list={['program__inner', { 'program__inner--flip': i % 2 === 1 }]}>
 				<div class="program__text">
-					<span class="program__icon"><Icon name={p.icon} width={32} height={32} /></span>
-					<p class="program__num">Pillar {i + 1}</p>
+					<span class="program__icon"><Icon name={p.icon} width={30} height={30} /></span>
+					<p class="eyebrow">Pillar {i + 1}</p>
 					<h2>{p.title}</h2>
 					<p>{p.body}</p>
 				</div>
@@ -36,55 +36,41 @@ const images = {
 						<img src={images[p.id].src} alt={images[p.id].alt} loading="lazy" />
 					) : (
 						<div class="program__list">
-							<p><strong>What we offer</strong></p>
+							<p class="program__list-title">What we offer</p>
 							<ul>{p.offerings.map((o) => <li>{o}</li>)}</ul>
 						</div>
 					)}
 				</div>
-			</section>
-		))}
-	</Container>
+			</div>
+		</section>
+	))}
 
-	<CtaCardSection>
-		<h2>Help us reach more families</h2>
-		<p>Your support funds tutoring, job training, and community wellness programs.</p>
-		<Button href="/get-involved">Get Involved</Button>
-	</CtaCardSection>
+	<GiveBand title="Help us reach more families" text="Your support funds tutoring, job training, and community wellness programs." />
 </Layout>
 
 <style>
-	.lead { font-size: var(--font-size-md); }
-	.program {
-		margin: var(--section-margin) auto;
-		display: grid;
-		grid-template-columns: 1.2fr 1fr;
-		gap: 2rem;
-		align-items: center;
-		scroll-margin-top: 2rem;
+	.program { scroll-margin-top: 1rem; }
+	.program--ivory { background: var(--brand-ivory); }
+	.program__inner {
+		max-width: 1200px; margin: 0 auto; padding: 72px 24px;
+		display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;
 	}
-	.program--alt .program__text { order: 2; }
+	.program__inner--flip .program__text { order: 2; }
+	.program__text { min-width: 0; }
+	.program__text h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); text-wrap: balance; }
+	.program__text p:last-child { font-size: 1.1rem; line-height: 1.7; color: #2A3240; }
 	.program__icon {
-		display: grid; place-items: center;
-		width: 3.5rem; height: 3.5rem; border-radius: 50%;
-		background: var(--theme-primary); color: var(--theme-on-primary);
+		display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%;
+		background: var(--brand-navy); color: #FFFFFF; margin-bottom: 1.25rem;
 	}
-	.program__num {
-		margin: 1rem 0 0; font-size: var(--font-size-sm);
-		text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75;
-	}
-	.program__aside img {
-		width: 100%; max-height: 420px; object-fit: cover;
-		border-radius: var(--theme-shape-radius);
-	}
-	.program__list {
-		padding: 2rem;
-		background: var(--theme-surface-2); color: var(--theme-on-surface-2);
-		border-radius: var(--theme-shape-radius);
-	}
+	.program__aside img { display: block; width: 100%; max-height: 420px; object-fit: cover; border-top: 6px solid var(--pillar-color); }
+	.program__list { padding: 32px; background: #FFFFFF; border: 1px solid var(--brand-line); border-top: 6px solid var(--pillar-color); }
+	.program__list-title { font-weight: 900; font-size: 1.2rem; }
 	.program__list ul { margin: 0; padding-left: 1.2rem; }
-	.program__list li { margin-bottom: 0.5rem; }
+	.program__list li { margin-bottom: 0.6rem; font-size: 1.05rem; }
+	.program__list li::marker { color: var(--brand-gold); }
 	@media (max-width: 768px) {
-		.program { grid-template-columns: 1fr; }
-		.program--alt .program__text { order: 0; }
+		.program__inner { grid-template-columns: 1fr; padding: 48px 16px; gap: 28px; }
+		.program__inner--flip .program__text { order: 0; }
 	}
 </style>

@@ -2,6 +2,7 @@ export const pillars = [
 	{
 		id: 'education',
 		icon: 'mdi:school-outline',
+		color: 'var(--brand-coral)',
 		title: 'Education and Youth Development',
 		summary:
 			'We help children and teens build strong academic foundations, explore their interests, and gain the confidence to pursue their goals.',
@@ -11,6 +12,7 @@ export const pillars = [
 	{
 		id: 'workforce',
 		icon: 'mdi:briefcase-outline',
+		color: 'var(--brand-sky)',
 		title: 'Workforce and Economic Mobility',
 		summary:
 			'We give adults practical skills, credentials, and resources to secure good jobs, start businesses, and build financial stability.',
@@ -20,6 +22,7 @@ export const pillars = [
 	{
 		id: 'wellness',
 		icon: 'mdi:home-heart',
+		color: 'var(--brand-gold)',
 		title: 'Family and Community Wellness',
 		summary:
 			'We strengthen families and neighborhoods by meeting essential needs and promoting physical, mental, and emotional well-being.',
