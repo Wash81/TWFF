@@ -1,41 +1,35 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Container, Button } from '@components/odyssey-theme';
-import settings from '../../../config/settings.js';
-import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 ---
 
 <Container>
 	<section class="hero-section__section">
 		<div class="hero-section__text">
-				<h1>Welcome to Odyssey</h1>
-				<p>
-					A marketing website theme built with <a
-						href="https://astro.build"
-						target="_blank"
-						rel="noreferrer">Astro</a
-					> and carefully crafted for startups and businesses.
-				</p>
-				<div class="hero-btns__container">
-					<Button href="/theme/get-started" customIcon
-						>Get Started
-            <Fragment slot="icon">
-              <Icon name="ic:baseline-chevron-right"/>
-            </Fragment>
-            </Button
-					>
-					<Button href="/theme/style-guide" unelevated>Style Guide</Button>
-				</div>
-        {settings.enableThemeSwitcher && <ThemeSwitcher client:only/>}
+			<p class="eyebrow">A nonprofit for families and communities</p>
+			<h1>Creating pathways to opportunity</h1>
+			<p>
+				The Washington Family Foundation helps children and adults in underserved
+				communities thrive through education, training, and community support.
+			</p>
+			<div class="hero-btns__container">
+				<Button href="/get-involved#donate" customIcon>
+					Support Our Work
+					<Fragment slot="icon">
+						<Icon name="ic:baseline-chevron-right" />
+					</Fragment>
+				</Button>
+				<Button href="/programs" unelevated>Our Programs</Button>
+			</div>
 		</div>
 		<div class="hero-section__image">
-				<picture>
-					<img
-						src="/assets/images/home/classic-hero.jpg"
-						alt="Astro Odyssey"
-						id="home-hero-image"
-					/>
-				</picture>
+			<picture>
+				<img
+					src="/assets/images/landing-1/landing-sticky.jpg"
+					alt="An adult working on a laptop at a desk"
+					id="home-hero-image"
+				/>
+			</picture>
 		</div>
 	</section>
 </Container>
@@ -43,23 +37,29 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 <style>
 	.hero-section__section {
 		margin: var(--section-margin) auto;
-		min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
+		min-height: min(80vh, 720px);
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		align-items: center;
-		gap: 1rem;
+		gap: 2rem;
 	}
 	.hero-section__text {
 		justify-self: center;
-		max-width: 25rem;
+		max-width: 32rem;
+	}
+	.eyebrow {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: var(--font-size-sm);
+		color: var(--theme-primary);
+		font-weight: 700;
+		margin-bottom: 0.5rem;
 	}
 	.hero-btns__container {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		gap: 1rem;
-	}
-	.hero-btns__container {
-		margin-right: 1rem;
 	}
 	.hero-section__image {
 		display: flex;
@@ -67,7 +67,7 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 	.hero-section__image img {
 		width: 100%;
 		height: 100%;
-		max-height: 80vh;
+		max-height: 75vh;
 		object-fit: cover;
 		border-radius: var(--theme-shape-radius);
 	}

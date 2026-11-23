@@ -1,18 +1,35 @@
 ---
 ---
 
-<p class="odyssey-logo">Odyssey</p>
+<p class="twff-logo"><span class="twff-logo__mark" aria-hidden="true">W</span><span>The Washington Family Foundation</span></p>
 
 <style>
-	.odyssey-logo {
+	.twff-logo {
 		width: fit-content;
 		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
 		font-family: var(--theme-font-family-serif);
-    font-size: var(--font-size-md);
+		font-size: var(--font-size-md);
+		line-height: 1.2;
 		color: inherit;
 	}
-	.odyssey-logo:hover {
+	.twff-logo__mark {
+		flex: none;
+		display: grid;
+		place-items: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: var(--theme-primary);
+		color: var(--theme-on-primary);
+		font-weight: 700;
+	}
+	.twff-logo:hover span:last-child {
 		text-decoration: underline;
-		cursor: pointer;
+	}
+	@media (max-width: 900px) {
+		.twff-logo span:last-child { font-size: 0.95rem; max-width: 12rem; }
 	}
 </style>

@@ -1,0 +1,90 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Container, TextSection, CtaCardSection, Button } from '@components/odyssey-theme';
+import Layout from '../layouts/Page.astro';
+import { pillars } from '../config/pillars.js';
+
+const seo = {
+	title: 'Programs | The Washington Family Foundation',
+	description: 'Education and youth development, workforce and economic mobility, and family and community wellness.',
+};
+const images = {
+	workforce: { src: '/assets/images/landing-1/landing-hero-1.jpg', alt: 'An adult working on a laptop in a bright workspace' },
+};
+---
+
+<Layout {seo}>
+	<TextSection narrow>
+		<h1>Our Programs</h1>
+		<p class="lead">
+			Our work is organized around three pillars that meet families where they
+			are, supporting children, adults, and the communities they call home.
+		</p>
+	</TextSection>
+
+	<Container>
+		{pillars.map((p, i) => (
+			<section id={p.id} class:list={['program', { 'program--alt': i % 2 === 1 }]}>
+				<div class="program__text">
+					<span class="program__icon"><Icon name={p.icon} width={32} height={32} /></span>
+					<p class="program__num">Pillar {i + 1}</p>
+					<h2>{p.title}</h2>
+					<p>{p.body}</p>
+				</div>
+				<div class="program__aside">
+					{images[p.id] ? (
+						<img src={images[p.id].src} alt={images[p.id].alt} loading="lazy" />
+					) : (
+						<div class="program__list">
+							<p><strong>What we offer</strong></p>
+							<ul>{p.offerings.map((o) => <li>{o}</li>)}</ul>
+						</div>
+					)}
+				</div>
+			</section>
+		))}
+	</Container>
+
+	<CtaCardSection>
+		<h2>Help us reach more families</h2>
+		<p>Your support funds tutoring, job training, and community wellness programs.</p>
+		<Button href="/get-involved">Get Involved</Button>
+	</CtaCardSection>
+</Layout>
+
+<style>
+	.lead { font-size: var(--font-size-md); }
+	.program {
+		margin: var(--section-margin) auto;
+		display: grid;
+		grid-template-columns: 1.2fr 1fr;
+		gap: 2rem;
+		align-items: center;
+		scroll-margin-top: 2rem;
+	}
+	.program--alt .program__text { order: 2; }
+	.program__icon {
+		display: grid; place-items: center;
+		width: 3.5rem; height: 3.5rem; border-radius: 50%;
+		background: var(--theme-primary); color: var(--theme-on-primary);
+	}
+	.program__num {
+		margin: 1rem 0 0; font-size: var(--font-size-sm);
+		text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75;
+	}
+	.program__aside img {
+		width: 100%; max-height: 420px; object-fit: cover;
+		border-radius: var(--theme-shape-radius);
+	}
+	.program__list {
+		padding: 2rem;
+		background: var(--theme-surface-2); color: var(--theme-on-surface-2);
+		border-radius: var(--theme-shape-radius);
+	}
+	.program__list ul { margin: 0; padding-left: 1.2rem; }
+	.program__list li { margin-bottom: 0.5rem; }
+	@media (max-width: 768px) {
+		.program { grid-template-columns: 1fr; }
+		.program--alt .program__text { order: 0; }
+	}
+</style>

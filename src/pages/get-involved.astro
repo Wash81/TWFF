@@ -1,0 +1,76 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Container, TextSection, Button } from '@components/odyssey-theme';
+import Layout from '../layouts/Page.astro';
+
+const seo = {
+	title: 'Get Involved | The Washington Family Foundation',
+	description: 'Donate, volunteer, or partner with The Washington Family Foundation.',
+};
+const ways = [
+	{
+		id: 'donate',
+		icon: 'mdi:hand-heart-outline',
+		title: 'Donate',
+		text: 'Every gift helps a child get tutoring, an adult earn a credential, or a family connect to essential resources. Contact us to make a gift or learn about recurring giving.',
+		cta: 'Make a Gift',
+	},
+	{
+		id: 'volunteer',
+		icon: 'mdi:account-group-outline',
+		title: 'Volunteer',
+		text: 'Share your time and talents as a tutor, mentor, career coach, or helper at our community outreach events.',
+		cta: 'Volunteer With Us',
+	},
+	{
+		id: 'partner',
+		icon: 'mdi:handshake-outline',
+		title: 'Partner With Us',
+		text: 'Schools, employers, funders, and community organizations: work with us to expand opportunity for families in underserved communities.',
+		cta: 'Start a Conversation',
+	},
+];
+---
+
+<Layout {seo}>
+	<TextSection narrow>
+		<h1>Get Involved</h1>
+		<p class="lead">
+			Strong communities are built together. Here is how you can help families
+			build skills, stability, and support.
+		</p>
+	</TextSection>
+
+	<Container>
+		<div class="ways">
+			{ways.map((w) => (
+				<section id={w.id} class="way">
+					<span class="way__icon"><Icon name={w.icon} width={28} height={28} /></span>
+					<h2>{w.title}</h2>
+					<p>{w.text}</p>
+					<Button href={`/contact?interest=${w.id}`}>{w.cta}</Button>
+				</section>
+			))}
+		</div>
+	</Container>
+</Layout>
+
+<style>
+	.lead { font-size: var(--font-size-md); }
+	.ways {
+		margin: var(--section-margin) auto;
+		display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--theme-grid-gap);
+	}
+	.way {
+		padding: 2rem; scroll-margin-top: 2rem;
+		background: var(--theme-surface-1); color: var(--theme-on-surface-1);
+		border-radius: var(--theme-shape-radius);
+		display: flex; flex-direction: column; align-items: flex-start;
+	}
+	.way p { flex: 1; }
+	.way__icon {
+		display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%;
+		background: var(--theme-primary); color: var(--theme-on-primary);
+	}
+	@media (max-width: 900px) { .ways { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,56 @@
+---
+import { TextSection, TextCardSection } from '@components/odyssey-theme';
+import Layout from '../layouts/Page.astro';
+import PillarsSection from '../components/sections/PillarsSection.astro';
+
+const seo = {
+	title: 'About | The Washington Family Foundation',
+	description: 'Our mission, vision, and approach to creating pathways to opportunity.',
+};
+---
+
+<Layout {seo}>
+	<TextSection narrow>
+		<h1>About the Foundation</h1>
+		<p class="lead">
+			The Washington Family Foundation is a nonprofit organization that helps
+			children and adults in underserved communities thrive through education,
+			training, and community support.
+		</p>
+	</TextSection>
+
+	<TextCardSection>
+		<h2 id="mission">Mission</h2>
+		<p>
+			The Washington Family Foundation creates pathways to opportunity for children
+			and adults in underserved communities. Through education, workforce training,
+			and community outreach, we help families build skills, stability, and the
+			support they need to thrive, today and for generations to come.
+		</p>
+	</TextCardSection>
+
+	<TextCardSection surfaceNumber={2}>
+		<h2 id="vision">Vision</h2>
+		<p>
+			The Washington Family Foundation envisions communities where every child and
+			adult has a fair chance to succeed, no matter their zip code, income, or
+			circumstances. We see a future where families have the resources, skills, and
+			support to thrive and give back, building stronger communities for
+			generations to come.
+		</p>
+	</TextCardSection>
+
+	<PillarsSection>
+		<h2>How we work</h2>
+		<p>
+			The Washington Family Foundation advances its mission through three pillars:
+			Education and Youth Development, Workforce and Economic Mobility, and Family
+			and Community Wellness.
+		</p>
+	</PillarsSection>
+</Layout>
+
+<style>
+	.lead { font-size: var(--font-size-md); }
+	h2[id] { scroll-margin-top: 2rem; }
+</style>

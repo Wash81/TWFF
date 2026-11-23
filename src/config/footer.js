@@ -1,80 +1,30 @@
-export const footerSocials = [
-  {
-    name: 'Twitter',
-    url: 'https://twitter.com/jaydanurwin',
-    icon: "mdi:twitter",
-  },
-  {
-    name: 'Youtube',
-    url: 'https://youtube.com/@jaydanurwin',
-    icon: "mdi:youtube",
-  },
-  {
-    name: 'Github',
-    url: 'https://github.com/jaydanurwin',
-    icon: "mdi:github",
-  },
-  {
-    name: 'Discord',
-    url: 'https://astro.build/chat',
-    icon: "ic:baseline-discord",
-  },
-]
+// Add your organization's social profiles here, e.g.
+// { name: 'Facebook', url: 'https://facebook.com/yourpage', icon: 'mdi:facebook' },
+export const footerSocials = [];
 
 export const footerLists = [
 	{
-		title: 'Landing Pages',
+		title: 'Foundation',
 		items: [
-			{
-				title: 'Landing Page 1',
-				slug: '/landing-pages/landing-1',
-			},
-			{
-				title: 'Landing Page 2',
-				slug: '/landing-pages/landing-2',
-			},
-      // {
-			// 	title: 'Landing Page 3',
-			// 	slug: '/landing-pages/landing-3',
-			// },
+			{ title: 'About Us', slug: '/about' },
+			{ title: 'Mission & Vision', slug: '/about#mission' },
+			{ title: 'Contact', slug: '/contact' },
 		],
 	},
 	{
-		title: 'Company',
+		title: 'Programs',
 		items: [
-			{
-				title: 'About',
-				slug: '/company/about',
-			},
-			{
-				title: 'Blog',
-				slug: '/blog',
-			},
-			{
-				title: 'Contact',
-				slug: '/company/contact',
-			},
+			{ title: 'Education & Youth', slug: '/programs#education' },
+			{ title: 'Workforce & Mobility', slug: '/programs#workforce' },
+			{ title: 'Family & Community', slug: '/programs#wellness' },
 		],
 	},
 	{
-		title: 'Theme',
+		title: 'Get Involved',
 		items: [
-			{
-				title: 'Get Started',
-				slug: '/theme/get-started',
-			},
-			{
-				title: 'Style Guide',
-				slug: '/theme/style-guide',
-			},
-      {
-        title: 'Theme Setup',
-        slug: '/theme/theme-setup',
-      },
-      {
-        title: 'Customizing Odyssey',
-        slug: '/theme/customizing-odyssey',
-      }
+			{ title: 'Donate', slug: '/get-involved#donate' },
+			{ title: 'Volunteer', slug: '/get-involved#volunteer' },
+			{ title: 'Partner With Us', slug: '/get-involved#partner' },
 		],
 	},
 ];

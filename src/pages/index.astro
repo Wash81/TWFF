@@ -1,92 +1,60 @@
 ---
-import { Container, FeatureCard } from '@components/odyssey-theme';
-
+import { CtaCardSection, TextCardSection, Button } from '@components/odyssey-theme';
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import PillarsSection from '../components/sections/PillarsSection.astro';
 ---
 
 <Layout>
 	<HomeHeroSection />
-	<Container>
-		<section class="feature-card__section">
-			<h2>Landing Pages</h2>
-			<p>
-				Use one of our landing pages to jumpstart your website or
-				ad campaign.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/landing-pages/landing-1" title="Landing Page 1" imgSrc="/assets/images/home/screenshots/landing-1">
-				</FeatureCard>
-				<FeatureCard href="/landing-pages/landing-2" title="Landing Page 2" imgSrc="/assets/images/home/screenshots/landing-2">
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Company Pages</h2>
-			<p>
-				Use one of our prebuilt company pages for your about page, contact page,
-				legal pages, blog posts, etc.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/company/about" title="About Page" imgSrc="/assets/images/home/screenshots/about">
-				</FeatureCard>
-				<FeatureCard href="/company/contact" title="Contact Page" imgSrc="/assets/images/home/screenshots/contact">
-				</FeatureCard>
-				<FeatureCard href="/blog/" title="Blog Page" imgSrc="/assets/images/home/screenshots/blog">
-				</FeatureCard>
-				<FeatureCard
-					href="/blog/posts/remote-work-mental-health"
-					title="Blog Post"
-          imgSrc="/assets/images/home/screenshots/blog-post"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/company/legal"
-					imgSrc="/assets/images/home/screenshots/legal"
-					title="Legal Page"
-				>
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+	<TextCardSection>
+		<h2>Our mission</h2>
+		<p class="lead">
+			The Washington Family Foundation creates pathways to opportunity for children
+			and adults in underserved communities. Through education, workforce training,
+			and community outreach, we help families build skills, stability, and the
+			support they need to thrive, today and for generations to come.
+		</p>
+		<Button href="/about" unelevated>About the Foundation</Button>
+	</TextCardSection>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Theme Pages</h2>
-			<p>Learn more about how to set up and use the Odyssey Theme.</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/theme/get-started"
-					imgSrc="/assets/images/home/screenshots/get-started"
-					title="Get Started"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/theme/style-guide"
-					imgSrc="/assets/images/home/screenshots/style-guide"
-					title="Style Guide"
-				>
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+	<PillarsSection>
+		<h2>Three pillars, one goal</h2>
+		<p>
+			We advance our mission through three pillars that support every member of
+			the family, from the classroom to the workplace to the neighborhood.
+		</p>
+	</PillarsSection>
+
+	<CtaCardSection background="var(--theme-primary)" color="var(--theme-on-primary)">
+		<h2>A future where every family can thrive</h2>
+		<p>
+			We envision communities where every child and adult has a fair chance to
+			succeed, no matter their zip code, income, or circumstances.
+		</p>
+		<div class="cta-btns">
+			<a class="cta-link" href="/get-involved#donate">Donate</a>
+			<a class="cta-link cta-link--ghost" href="/get-involved#volunteer">Volunteer</a>
+		</div>
+	</CtaCardSection>
 </Layout>
 
 <style>
-	.feature-card__section {
-		margin: var(--section-margin) auto;
+	.lead { font-size: var(--font-size-md); }
+	.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 0.5rem; }
+	.cta-link {
+		padding: 0.75rem 1.5rem;
+		border-radius: var(--theme-button-border-radius);
+		background: var(--theme-on-primary);
+		color: var(--theme-primary);
+		font-weight: 700;
+		text-decoration: none;
 	}
-	.feature-card__grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--theme-grid-gap);
+	.cta-link--ghost {
+		background: transparent;
+		color: var(--theme-on-primary);
+		box-shadow: inset 0 0 0 2px var(--theme-on-primary);
 	}
-	@media (max-width: 768px) {
-		.feature-card__grid {
-			grid-template-columns: 1fr;
-		}
-	}
+	.cta-link:hover { opacity: 0.88; }
 </style>
