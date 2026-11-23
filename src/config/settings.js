@@ -5,4 +5,5 @@ export default {
 	name: `The Washington Family Foundation`,
 	enableThemeSwitcher: false,
 	showPlug: false,
+	email: `info@twffinc.org`,
 };

@@ -35,6 +35,11 @@ const { seo } = Astro.props as Props;
 		copyrightName={settings.name}
     showPlug={settings.showPlug}
 	>
-		<Logo slot="logo" />
+		<div slot="logo"><Logo /><p class="footer-email"><a href={`mailto:${settings.email}`}>{settings.email}</a></p></div>
 	</Footer>
 </Layout>
+
+<style>
+	.footer-email { margin: 0.75rem 0 0; }
+	.footer-email a { color: inherit; }
+</style>
