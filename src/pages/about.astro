@@ -61,10 +61,15 @@ const seo = {
 <style>
 	.mv__inner {
 		max-width: 1200px; margin: 0 auto; padding: 72px 24px;
-		display: flex; flex-wrap: wrap; gap: 56px; align-items: center;
+		display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 56px; align-items: center;
 	}
-	.mv__seal { flex: none; margin: 0 auto; }
-	.mv__text { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+	.mv__seal { align-self: center; }
+	.mv__text { min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+	@media (max-width: 720px) {
+		.mv__inner { grid-template-columns: 1fr; gap: 32px; }
+		.mv__seal { justify-self: center; }
+		.mv__seal :global(svg) { width: 160px; height: 160px; }
+	}
 	.mv__block { scroll-margin-top: 2rem; }
 	.mv__block p:last-child { font-size: 1.15rem; line-height: 1.7; color: #2A3240; margin: 0; }
 	.pillars-lead { max-width: 44rem; color: #2A3240; }
