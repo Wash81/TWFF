@@ -60,11 +60,11 @@ const seo = {
 
 <style>
 	.mv__inner {
-		max-width: 1200px; margin: 0 auto; padding: 72px 24px;
-		display: flex; flex-wrap: wrap; gap: 56px; align-items: center;
+		max-width: 960px; margin: 0 auto; padding: 72px 24px;
+		display: flex; flex-direction: column; align-items: center; gap: 48px;
 	}
-	.mv__seal { flex: none; margin: 0 auto; }
-	.mv__text { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+	.mv__seal { flex: none; display: flex; justify-content: center; }
+	.mv__text { width: 100%; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px 48px; }
 	.mv__block { scroll-margin-top: 2rem; }
 	.mv__block p:last-child { font-size: 1.15rem; line-height: 1.7; color: #2A3240; margin: 0; }
 	.pillars-lead { max-width: 44rem; color: #2A3240; }
